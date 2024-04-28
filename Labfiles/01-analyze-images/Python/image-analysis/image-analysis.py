@@ -115,7 +115,6 @@ def AnalyzeImage(image_filename, image_data, cv_client):
     print('  Results saved in', outputfile)
 
 
-
     
     # Get people in the image
     if result.people is not None:
@@ -135,7 +134,7 @@ def AnalyzeImage(image_filename, image_data, cv_client):
             draw.rectangle(bounding_box, outline=color, width=3)
 
             # Return the confidence of the person detected
-            #print(" {} (confidence: {:.2f}%)".format(detected_people.bounding_box, detected_people.confidence * 100))
+            print(" {} (confidence: {:.2f}%)".format(detected_people.bounding_box, detected_people.confidence * 100))
             
         # Save annotated image
         plt.imshow(image)
