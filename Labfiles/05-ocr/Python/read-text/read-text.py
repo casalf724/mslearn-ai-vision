@@ -4,8 +4,10 @@ import time
 from PIL import Image, ImageDraw
 from matplotlib import pyplot as plt
 
-# Import namespaces
-
+# import namespaces
+from azure.ai.vision.imageanalysis import ImageAnalysisClient
+from azure.ai.vision.imageanalysis.models import VisualFeatures
+from azure.core.credentials import AzureKeyCredential
 
 def main():
 
@@ -18,7 +20,10 @@ def main():
         ai_key = os.getenv('AI_SERVICE_KEY')
 
         # Authenticate Azure AI Vision client
-        
+        cv_client = ImageAnalysisClient(
+            endpoint=ai_endpoint,
+            credential=AzureKeyCredential(ai_key)
+        )
 
         # Menu for text reading functions
         print('\n1: Use Read API for image (Lincoln.jpg)\n2: Read handwriting (Note.jpg)\nAny other key to quit\n')
